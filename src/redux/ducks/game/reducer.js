@@ -1,6 +1,8 @@
 import * as types from './types';
+import * as utils from './utils';
 
 const initialState = {
+  size: 4,
   puzzle: [],
 };
 
@@ -9,7 +11,8 @@ const reducer = (state = initialState, action) => {
     case types.START_NEW_GAME:
       return {
         ...state,
-        puzzle: new Array(action.payload.size).fill(10),
+        size: action.payload.size,
+        puzzle: utils.getNewPuzzle(action.payload.size),
       };
 
     default:
