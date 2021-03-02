@@ -6,25 +6,24 @@ import './App.scss';
 import Game from '../Game';
 
 const App = () => {
-  const [adjective, setAdjective] = useState('good');
+  const [visibleGame, setVisibleGame] = useState(true);
   const dispatch = useDispatch();
 
-  // const puzzle = useSelector(selectors.getPuzzle);
+  const puzzle = useSelector(selectors.getPuzzle);
   // const allState = useSelector((state) => state.game);
 
   // console.log(allState);
-  // console.log(puzzle);
+  console.log(puzzle);
 
   return (
     <div className="app-container">
-      <div>{adjective}</div>
-      <button type="button" onClick={() => setAdjective('beautiful')}>
+      <button type="button" onClick={() => setVisibleGame((s) => !s)}>
         Change
       </button>
-      <button type="button" onClick={() => dispatch(operations.startNewGame(4))}>
+      <button type="button" onClick={() => dispatch(operations.startNewGame(3))}>
         Start game
       </button>
-      <Game />
+      {visibleGame && <Game />}
     </div>
   );
 };

@@ -1,3 +1,10 @@
+const KEY = {
+  ARROW_UP: 'ArrowUp',
+  ARROW_DOWN: 'ArrowDown',
+  ARROW_LEFT: 'ArrowLeft',
+  ARROW_RIGHT: 'ArrowRight',
+};
+
 export const getNewPuzzle = (size) => {
   const orderedArr = new Array(size ** 2).fill().map((item, index) => index);
   const solvedArr = getSolved(shuffleArr(orderedArr));
@@ -67,7 +74,7 @@ const shuffleArr = (arr) => {
   return newArr;
 };
 
-export const moveCard = (puzzle, index, emptyIndex) => {
+export const moveCard = ({ puzzle, index, emptyIndex }) => {
   const selectedCard = puzzle[index];
   const emptyCard = puzzle[emptyIndex];
 
@@ -91,8 +98,45 @@ export const moveCard = (puzzle, index, emptyIndex) => {
 };
 
 const isMoved = (selectedCard, emptyCard) => {
+  if (!selectedCard) return false;
+
   const topDiff = Math.abs(selectedCard.top - emptyCard.top);
   const leftDif = Math.abs(selectedCard.left - emptyCard.left);
 
   return topDiff + leftDif === 1;
 };
+
+export const getIndexCardByKey = ({ key, puzzle, emptyIndex }) => {
+  const emptyCard = puzzle[emptyIndex];
+  if (!emptyCard) return -1;
+
+  let { top, left } = emptyCard;
+
+  switch (key) {
+    case KEY.ARROW_UP:
+      top += 1;
+      break;
+    case KEY.ARROW_DOWN:
+      top -= 1;
+      break;
+    case KEY.ARROW_LEFT:
+      left += 1;
+      break;
+    case KEY.ARROW_RIGHT:
+      left -= 1;
+      break;
+    default:
+      return -1;
+  }
+
+  const index = puzzle.findIndex((card) => card.top === top && card.left === left);
+
+  return index;
+};
+
+export const checkWin = (puzzle, size) => {
+  return puzzle.every((card) => card.top * size + card.left === card.value);
+};
+
+const testArr = [0, 1, 2, 3, 4, 5, 6, 8, 7, 9];
+console.log(checkSolved(testArr));

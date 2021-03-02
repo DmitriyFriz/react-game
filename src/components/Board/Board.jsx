@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { operations, selectors } from '../../redux/ducks/game';
 
@@ -11,6 +11,16 @@ const Board = () => {
   const emptyIndex = useSelector(selectors.getEmptyIndex);
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    const handelKey = (event) => {
+      dispatch(operations.clickOnKey(event.code));
+    };
+
+    document.addEventListener('keyup', handelKey);
+
+    return () => document.removeEventListener('keyup', handelKey);
+  }, []);
 
   const cards = puzzle.map((card, index) => {
     const { top, left, value } = card;
