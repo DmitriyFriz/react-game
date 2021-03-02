@@ -6,3 +6,10 @@ export const startNewGame = (size) => ({
     size,
   },
 });
+
+export const clickOnCard = (index) => ({
+  type: types.CLICK_ON_CARD,
+  payload: {
+    index,
+  },
+});

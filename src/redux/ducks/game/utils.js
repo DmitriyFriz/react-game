@@ -1,11 +1,15 @@
 export const getNewPuzzle = (size) => {
-  return new Array(size ** 2).fill().map((item, index) => getNewCard(index, size));
+  const orderedArr = new Array(size ** 2).fill().map((item, index) => index);
+  const solvedArr = getSolved(shuffleArr(orderedArr));
+  const emptyIndex = getEmptyIndex(solvedArr);
+  const puzzle = solvedArr.map((item, index) => getNewCard(item, index, size));
+  return { puzzle, emptyIndex };
 };
 
-const getNewCard = (index, size) => ({
+const getNewCard = (item, index, size) => ({
   top: getRowPosition(index, size),
   left: getColumnPosition(index, size),
-  value: index + 1,
+  value: item,
 });
 
 const getRowPosition = (index, size) => Math.floor(index / size);
@@ -14,7 +18,8 @@ const getColumnPosition = (index, size) => index % size;
 const getEmptyIndex = (arr) =>
   arr.findIndex((item, index, currentArr) => item === currentArr.length - 1);
 
-const checkSolved = (arr, size) => {
+const checkSolved = (arr) => {
+  const size = arr.length ** 0.5;
   const emptyIndex = getEmptyIndex(arr);
 
   const totalSum = arr.reduce((sum, item, index, currentArr) => {
@@ -31,10 +36,12 @@ const checkSolved = (arr, size) => {
 
   const emptyRowPosition = getRowPosition(emptyIndex, size);
 
-  return !!((totalSum + emptyRowPosition) % 2);
+  return (totalSum + emptyRowPosition) % 2 !== size % 2;
 };
 
-const getSolved = (arr, size) => {
+const getSolved = (arr) => {
+  const size = arr.length ** 0.5;
+
   if (checkSolved(arr, size)) {
     return arr;
   }
@@ -50,8 +57,12 @@ const getSolved = (arr, size) => {
   return newArr;
 };
 
-const testArr = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+const shuffleArr = (arr) => {
+  const newArr = [...arr];
+  for (let i = newArr.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * newArr.length);
+    [newArr[i], newArr[j]] = [newArr[j], newArr[i]];
+  }
 
-console.log(checkSolved(testArr, 4));
-const newTestArr = getSolved(testArr, 4);
-console.log(checkSolved(newTestArr, 4));
+  return newArr;
+};
