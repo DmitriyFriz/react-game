@@ -5,23 +5,26 @@ const initialState = {
   size: 4,
   puzzle: [],
   emptyIndex: 0,
+  clickNumber: 7,
 };
 
 const reducer = (state = initialState, action) => {
+  console.log(action.type);
+
   switch (action.type) {
-    case types.START_NEW_GAME: {
-      const { puzzle, emptyIndex } = utils.getNewPuzzle(action.payload.size);
+    case types.UPDATE_GAME: {
       return {
         ...state,
-        size: action.payload.size,
-        puzzle,
-        emptyIndex,
+        ...action.payload.data,
       };
     }
 
-    case types.CLICK_ON_CARD:
-      console.log(action.payload.index);
-      return state;
+    case types.MOVE_CARD:
+      return {
+        ...state,
+        puzzle: action.payload.puzzle,
+        clickNumber: state.clickNumber + 1,
+      };
 
     default:
       return state;

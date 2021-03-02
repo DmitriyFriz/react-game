@@ -1,15 +1,15 @@
 import * as types from './types';
 
-export const startNewGame = (size) => ({
-  type: types.START_NEW_GAME,
+export const updateGame = (data) => ({
+  type: types.UPDATE_GAME,
   payload: {
-    size,
+    data,
   },
 });
 
-export const clickOnCard = (index) => ({
-  type: types.CLICK_ON_CARD,
+export const moveCard = (puzzle) => ({
+  type: types.MOVE_CARD,
   payload: {
-    index,
+    puzzle,
   },
 });

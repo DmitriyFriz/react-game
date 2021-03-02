@@ -1,2 +1,2 @@
-export const START_NEW_GAME = 'START_NEW_GAME';
-export const CLICK_ON_CARD = 'CLICK_ON_CARD';
+export const UPDATE_GAME = 'UPDATE_GAME';
+export const MOVE_CARD = 'MOVE_CARD';

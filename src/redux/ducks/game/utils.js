@@ -66,3 +66,33 @@ const shuffleArr = (arr) => {
 
   return newArr;
 };
+
+export const moveCard = (puzzle, index, emptyIndex) => {
+  const selectedCard = puzzle[index];
+  const emptyCard = puzzle[emptyIndex];
+
+  const moved = isMoved(selectedCard, emptyCard);
+
+  if (moved) {
+    const newSelectedCard = { ...selectedCard, top: emptyCard.top, left: emptyCard.left };
+    const newEmptyCard = { ...emptyCard, top: selectedCard.top, left: selectedCard.left };
+
+    const newPuzzle = [...puzzle];
+    newPuzzle.splice(index, 1, newSelectedCard);
+    newPuzzle.splice(emptyIndex, 1, newEmptyCard);
+
+    return {
+      newPuzzle,
+      moved,
+    };
+  }
+
+  return { moved };
+};
+
+const isMoved = (selectedCard, emptyCard) => {
+  const topDiff = Math.abs(selectedCard.top - emptyCard.top);
+  const leftDif = Math.abs(selectedCard.left - emptyCard.left);
+
+  return topDiff + leftDif === 1;
+};

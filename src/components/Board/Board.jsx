@@ -12,8 +12,6 @@ const Board = () => {
 
   const dispatch = useDispatch();
 
-  // console.log(puzzle, size, emptyIndex);
-
   const cards = puzzle.map((card, index) => {
     const { top, left, value } = card;
 
