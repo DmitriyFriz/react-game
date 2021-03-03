@@ -9,21 +9,22 @@ const App = () => {
   const [visibleGame, setVisibleGame] = useState(true);
   const dispatch = useDispatch();
 
-  const puzzle = useSelector(selectors.getPuzzle);
+  const gameStatus = useSelector(selectors.getGameStatus);
+  const winStatus = useSelector(selectors.getWinStatus);
   // const allState = useSelector((state) => state.game);
 
   // console.log(allState);
-  console.log(puzzle);
 
   return (
     <div className="app-container">
       <button type="button" onClick={() => setVisibleGame((s) => !s)}>
         Change
       </button>
-      <button type="button" onClick={() => dispatch(operations.startNewGame(4))}>
+      <button type="button" onClick={() => dispatch(operations.startNewGame(2))}>
         Start game
       </button>
-      {visibleGame && <Game />}
+      {visibleGame && gameStatus && <Game />}
+      {winStatus && 'YOU WIN'}
     </div>
   );
 };

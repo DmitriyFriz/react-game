@@ -6,18 +6,19 @@ const initialState = {
   puzzle: [],
   emptyIndex: 0,
   clickNumber: 7,
+  gameStatus: false,
+  winStatus: false,
 };
 
 const reducer = (state = initialState, action) => {
   console.log(action.type);
 
   switch (action.type) {
-    case types.UPDATE_GAME: {
+    case types.UPDATE_GAME:
       return {
         ...state,
         ...action.payload.data,
       };
-    }
 
     case types.MOVE_CARD:
       return {
@@ -25,6 +26,19 @@ const reducer = (state = initialState, action) => {
         puzzle: action.payload.puzzle,
         clickNumber: state.clickNumber + 1,
       };
+
+    case types.CHANGE_GAME_STATUS:
+      return {
+        ...state,
+        gameStatus: action.payload.status,
+      };
+
+    case types.CHANGE_WIN_STATUS: {
+      return {
+        ...state,
+        winStatus: action.payload.status,
+      };
+    }
 
     default:
       return state;
