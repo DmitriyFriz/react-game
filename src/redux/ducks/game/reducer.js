@@ -6,8 +6,7 @@ const initialState = {
   puzzle: [],
   emptyIndex: 0,
   clickNumber: 7,
-  gameStatus: false,
-  winStatus: false,
+  status: 'start',
 };
 
 const reducer = (state = initialState, action) => {
@@ -27,18 +26,11 @@ const reducer = (state = initialState, action) => {
         clickNumber: state.clickNumber + 1,
       };
 
-    case types.CHANGE_GAME_STATUS:
+    case types.CHANGE_STATUS:
       return {
         ...state,
-        gameStatus: action.payload.status,
+        status: action.payload.status,
       };
-
-    case types.CHANGE_WIN_STATUS: {
-      return {
-        ...state,
-        winStatus: action.payload.status,
-      };
-    }
 
     default:
       return state;

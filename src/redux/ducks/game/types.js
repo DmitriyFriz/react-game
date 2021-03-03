@@ -1,4 +1,3 @@
 export const UPDATE_GAME = 'UPDATE_GAME';
 export const MOVE_CARD = 'MOVE_CARD';
-export const CHANGE_WIN_STATUS = 'CHANGE_WIN_STATUS';
-export const CHANGE_GAME_STATUS = 'CHANGE_GAME_STATUS';
+export const CHANGE_STATUS = 'CHANGE_STATUS';

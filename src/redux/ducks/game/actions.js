@@ -14,15 +14,8 @@ export const moveCard = (puzzle) => ({
   },
 });
 
-export const changeWinStatus = (status) => ({
-  type: types.CHANGE_WIN_STATUS,
-  payload: {
-    status,
-  },
-});
-
-export const changeGameStatus = (status) => ({
-  type: types.CHANGE_GAME_STATUS,
+export const changeStatus = (status) => ({
+  type: types.CHANGE_STATUS,
   payload: {
     status,
   },

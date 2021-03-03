@@ -5,8 +5,7 @@ import * as utils from './utils';
 export const startNewGame = (size) => (dispatch, getState) => {
   const { puzzle, emptyIndex } = utils.getNewPuzzle(size);
   dispatch(actions.updateGame({ size, puzzle, emptyIndex, clickNumber: 0 }));
-  dispatch(actions.changeGameStatus(true));
-  dispatch(actions.changeWinStatus(false));
+  dispatch(actions.changeStatus('game'));
 };
 
 export const clickOnCard = (index) => (dispatch, getState) => {
@@ -34,8 +33,7 @@ const moveCard = ({ puzzle, index, emptyIndex }) => (dispatch, getState) => {
     dispatch(actions.moveCard(newPuzzle));
     if (utils.checkWin(newPuzzle, size)) {
       setTimeout(() => {
-        dispatch(actions.changeWinStatus(true));
-        dispatch(actions.changeGameStatus(false));
+        dispatch(actions.changeStatus('finish'));
       }, 1000);
     }
   }

@@ -6,6 +6,4 @@ export const getEmptyIndex = (state) => state.game.emptyIndex;
 
 export const getClickNumber = (state) => state.game.clickNumber;
 
-export const getGameStatus = (state) => state.game.gameStatus;
-
-export const getWinStatus = (state) => state.game.winStatus;
+export const getStatus = (state) => state.game.status;
