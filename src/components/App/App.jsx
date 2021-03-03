@@ -20,7 +20,7 @@ const App = () => {
       <button type="button" onClick={() => setVisibleGame((s) => !s)}>
         Change
       </button>
-      <button type="button" onClick={() => dispatch(operations.startNewGame(3))}>
+      <button type="button" onClick={() => dispatch(operations.startNewGame(4))}>
         Start game
       </button>
       {visibleGame && <Game />}

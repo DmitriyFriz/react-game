@@ -41,9 +41,13 @@ const checkSolved = (arr) => {
     return sum + nextSum;
   }, 0);
 
-  const emptyRowPosition = getRowPosition(emptyIndex, size);
+  if (size % 2) {
+    return !(totalSum % 2);
+  }
 
-  return (totalSum + emptyRowPosition) % 2 !== size % 2;
+  const emptyRowPosition = getRowPosition(emptyIndex, size) + 1;
+
+  return !((totalSum + emptyRowPosition) % 2);
 };
 
 const getSolved = (arr) => {
@@ -56,10 +60,14 @@ const getSolved = (arr) => {
   const newArr = [...arr];
 
   const emptyIndex = getEmptyIndex(newArr);
-  const newEmptyIndex = emptyIndex + size < arr.length - 1 ? emptyIndex + size : emptyIndex - size;
 
-  const emptyItem = newArr.splice(emptyIndex, 1)[0];
-  newArr.splice(newEmptyIndex, 0, emptyItem);
+  const [firstIndex, secondIndex] =
+    emptyIndex > arr.length / 2 ? [0, 1] : [arr.length - 2, arr.length - 1];
+
+  const [firstElement, secondElement] = [arr[firstIndex], arr[secondIndex]];
+
+  newArr.splice(firstIndex, 1, secondElement);
+  newArr.splice(secondIndex, 1, firstElement);
 
   return newArr;
 };
@@ -137,6 +145,3 @@ export const getIndexCardByKey = ({ key, puzzle, emptyIndex }) => {
 export const checkWin = (puzzle, size) => {
   return puzzle.every((card) => card.top * size + card.left === card.value);
 };
-
-const testArr = [0, 1, 2, 3, 4, 5, 6, 8, 7, 9];
-console.log(checkSolved(testArr));
