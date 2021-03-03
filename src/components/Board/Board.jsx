@@ -39,6 +39,7 @@ const Board = () => {
 
     if (index === emptyIndex) {
       cardStyle.zIndex = -100;
+      cardStyle.opacity = 0;
     }
 
     return (

@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
+import { useSelector } from 'react-redux';
 
 import { operations, selectors } from '../../redux/ducks/game';
 import './App.scss';
 import Header from '../Header';
 import StartScreen from '../StartScreen';
 import Game from '../Game';
+import FinishScreen from '../FinishScreen';
 import Footer from '../Footer';
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
       <main className="main-container">
         {status === 'start' && <StartScreen />}
         {status === 'game' && <Game />}
-        {status === 'finish' && 'YOU WIN'}
+        {status === 'finish' && <FinishScreen />}
       </main>
       <Footer />
     </div>

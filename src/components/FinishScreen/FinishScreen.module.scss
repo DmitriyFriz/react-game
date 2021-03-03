@@ -1,4 +1,4 @@
-.start {
+.finish {
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -8,18 +8,26 @@
   text-align: center;
 }
 
+.congratulation {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.cup {
+  width: 180px;
+}
+
 .button_container {
+  max-width: 250px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  height: 300px;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 25px;
 }
 
 .button {
-    height: 40px;
-    width: 100px;
+    height: 20px;
+    width: 50px;
 
     transition: 0.1s;
 
@@ -39,5 +47,3 @@
       box-shadow: 0 0 3px #181c22;
     }
 }
-
-

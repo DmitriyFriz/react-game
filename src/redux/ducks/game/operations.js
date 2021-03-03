@@ -34,7 +34,7 @@ const moveCard = ({ puzzle, index, emptyIndex }) => (dispatch, getState) => {
     if (utils.checkWin(newPuzzle, size)) {
       setTimeout(() => {
         dispatch(actions.changeStatus('finish'));
-      }, 1000);
+      }, 500);
     }
   }
 };

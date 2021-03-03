@@ -13,14 +13,14 @@ const StartScreen = () => {
   };
 
   return (
-    <div className={s.container}>
-      <div>Select size</div>
+    <div className={s.start}>
+      <p>Select size</p>
       <ButtonContainer
         onclick={handleClick}
         buttonClassName={s.button}
         containerClassName={s.button_container}
       />
-      <div>Use ← ↑ → ↓ keys or mouse to move cards</div>
+      <p>Use ← ↑ → ↓ keys or mouse to move cards</p>
     </div>
   );
 };

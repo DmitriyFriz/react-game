@@ -5,13 +5,11 @@ const initialState = {
   size: 4,
   puzzle: [],
   emptyIndex: 0,
-  clickNumber: 7,
+  clickNumber: 0,
   status: 'start',
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(action.type);
-
   switch (action.type) {
     case types.UPDATE_GAME:
       return {

@@ -1,4 +1,4 @@
-.start {
+.game {
   display:flex;
   flex-direction: column;
   justify-content: center;
@@ -9,17 +9,15 @@
 }
 
 .button_container {
+  max-width: 250px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  height: 300px;
-  padding-top: 20px;
-  padding-bottom: 20px;
 }
 
 .button {
-    height: 40px;
-    width: 100px;
+    height: 20px;
+    width: 50px;
 
     transition: 0.1s;
 
@@ -39,5 +37,3 @@
       box-shadow: 0 0 3px #181c22;
     }
 }
-
-
