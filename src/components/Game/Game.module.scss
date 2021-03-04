@@ -12,6 +12,14 @@
   margin: 0 auto;
 }
 
+.top_container {
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  max-width: 250px;
+  width: 100%;
+}
+
 .button {
     height: 25px;
     width: 50px;
@@ -33,4 +41,11 @@
       opacity: 0.8;
       box-shadow: 0 0 3px #181c22;
     }
+}
+
+.refresh {
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #222831;
 }

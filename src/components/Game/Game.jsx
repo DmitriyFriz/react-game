@@ -1,5 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { ReloadOutlined } from '@ant-design/icons';
+
 import { selectors, operations } from '../../redux/ducks/game';
 
 import Board from '../Board';
@@ -16,7 +18,10 @@ const Game = () => {
 
   return (
     <div className={s.game}>
-      <p>Steps: {clickNumber}</p>
+      <div className={s.top_container}>
+        <ReloadOutlined className={s.refresh} onClick={() => handleClick()} />
+        <p>Steps: {clickNumber}</p>
+      </div>
       <Board />
       <ButtonContainer
         onclick={handleClick}

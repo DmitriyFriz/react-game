@@ -3,8 +3,12 @@ import * as selectors from './selectors';
 import * as utils from './utils';
 
 export const startNewGame = (size) => (dispatch, getState) => {
-  const { puzzle, emptyIndex } = utils.getNewPuzzle(size);
-  dispatch(actions.updateGame({ size, puzzle, emptyIndex, clickNumber: 0 }));
+  const currentSize = selectors.getSize(getState());
+
+  const correctSize = size || currentSize;
+
+  const { puzzle, emptyIndex } = utils.getNewPuzzle(correctSize);
+  dispatch(actions.updateGame({ size: correctSize, puzzle, emptyIndex, clickNumber: 0 }));
   dispatch(actions.changeStatus('game'));
 };
 
