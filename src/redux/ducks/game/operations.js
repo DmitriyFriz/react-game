@@ -2,6 +2,10 @@ import * as actions from './actions';
 import * as selectors from './selectors';
 import * as utils from './utils';
 
+// sound
+import moveSound from '../../../assets/sound/move.mp3';
+import successSound from '../../../assets/sound/success.mp3';
+
 export const startNewGame = (size) => (dispatch, getState) => {
   const currentSize = selectors.getSize(getState());
 
@@ -35,10 +39,19 @@ const moveCard = ({ puzzle, index, emptyIndex }) => (dispatch, getState) => {
   if (moved) {
     const size = selectors.getSize(getState());
     dispatch(actions.moveCard(newPuzzle));
+    playAudio(moveSound);
     if (utils.checkWin(newPuzzle, size)) {
       setTimeout(() => {
         dispatch(actions.changeStatus('finish'));
+        playAudio(successSound);
       }, 500);
     }
   }
+};
+
+const playAudio = (src) => {
+  const audio = new Audio();
+  audio.preload = 'auto';
+  audio.src = `${src}`;
+  audio.play();
 };
