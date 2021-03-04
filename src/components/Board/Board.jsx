@@ -52,7 +52,13 @@ const Board = () => {
     );
   });
 
-  return <div className="board">{cards}</div>;
+  return (
+    <div className="board">
+      <div className="board-wrapper">
+        <div className="board-content">{cards}</div>
+      </div>
+    </div>
+  );
 };
 
 export default Board;

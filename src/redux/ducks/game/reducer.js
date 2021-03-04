@@ -1,5 +1,4 @@
 import * as types from './types';
-import * as utils from './utils';
 
 const initialState = {
   size: 4,

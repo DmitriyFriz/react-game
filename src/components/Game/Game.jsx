@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectors, operations } from '../../redux/ducks/game';
 
@@ -16,7 +16,7 @@ const Game = () => {
 
   return (
     <div className={s.game}>
-      <p>Amount of steps: {clickNumber}</p>
+      <p>Steps: {clickNumber}</p>
       <Board />
       <ButtonContainer
         onclick={handleClick}

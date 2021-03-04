@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-import { operations, selectors } from '../../redux/ducks/game';
+import { selectors } from '../../redux/ducks/game';
 import './App.scss';
 import Header from '../Header';
 import StartScreen from '../StartScreen';
