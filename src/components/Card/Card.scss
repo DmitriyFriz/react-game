@@ -1,0 +1,15 @@
+.card {
+  position: absolute;
+  transition: all 0.4s ease-out;
+
+  background-color: #53677b;
+  border: 5px solid #ddd;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 25px;
+  outline: none;
+}

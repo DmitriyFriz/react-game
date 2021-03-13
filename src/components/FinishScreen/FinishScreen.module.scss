@@ -1,0 +1,49 @@
+.finish {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.congratulation {
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.cup {
+  width: 180px;
+}
+
+.button_container {
+  max-width: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 25px;
+}
+
+.button {
+    height: 25px;
+    width: 50px;
+
+    transition: 0.1s;
+
+    box-shadow: 0 0 7px #181c22;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+
+    background-color: #f05454;
+    cursor: pointer;
+
+    font-size: 20px;
+    text-transform: capitalize;
+
+    &:hover {
+      opacity: 0.8;
+      box-shadow: 0 0 3px #181c22;
+    }
+}
